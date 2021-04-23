@@ -6,7 +6,7 @@
 
 SC_MODULE(roteador){
 	sc_in_clk clk;
-	sc_out<bool> enable;
+	
 
 	
 	//Classe que armazena as filas de cada canal
@@ -16,10 +16,10 @@ SC_MODULE(roteador){
 	RoundPtr* roundPtr;
 
 	//Vetor que vai inidicar quais canais tem requisicao false, false, false, false
-	std::vector<bool> requisicoes_1 = {true, true, true, true};
-	std::vector<bool> requisicoes_2 = {true, true, true, true};
-	std::vector<bool> requisicoes_3 = {true, true, true, true};
-	std::vector<bool> requisicoes_4 = {true, true, true, true};
+	std::vector<bool> requisicoes_1 = {false, false, false, false};
+	std::vector<bool> requisicoes_2 = {false, false, false, false};
+	std::vector<bool> requisicoes_3 = {false, false, false, false};
+	std::vector<bool> requisicoes_4 = {false, false, false, false};
 
 	/*---------------------------   Portas de entrada   ---------------------------*/
 	/* -------------------------------- Esquerda ---------------------------------*/
@@ -196,13 +196,13 @@ SC_MODULE(roteador){
 			roundPtr->ptr_4++;
 		}
 
-		enable.write(true);
+		
 	}
 
 	SC_CTOR(roteador){
 		SC_METHOD(receber_dado);
 		SC_METHOD(rotear_e_arbitrar);
 
-		sensitive << val_1 << clk;
+		sensitive << clk;
 	}
 };

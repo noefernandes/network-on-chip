@@ -5,11 +5,6 @@ int sc_main(int argc, char *argv[]){
 	Filas* buffers = new Filas();
 	RoundPtr* roundPtr = new RoundPtr();
 
-	/*while(not buffers->fila_1.empty()){
-		std::cout << buffers->fila_1.front().bop_or_eop << " " << buffers->fila_1.front().x_dir << " " << buffers->fila_1.front().y_dir << std::endl;
-		buffers->fila_1.pop();
-	}*/
-
 	sc_clock clock("clock", 10, SC_NS, 1, 10, SC_NS);
 
 	sc_signal<bool> val_1, val_2, val_3, val_4;
@@ -63,9 +58,7 @@ int sc_main(int argc, char *argv[]){
 	roteador.ack_2(ack_2);
 	roteador.ack_3(ack_3);
 	roteador.ack_4(ack_4);
-	roteador.enable(enable);
-
-	controle.enable(enable);
+	
 	
 
 	sc_start();

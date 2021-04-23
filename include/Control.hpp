@@ -2,7 +2,7 @@
 
 SC_MODULE(controle) {
     sc_in_clk clk;
-    sc_in<bool> enable;
+    
 
     void print_counter(){
         wait();
@@ -16,6 +16,6 @@ SC_MODULE(controle) {
 
         SC_CTHREAD(print_counter, clk.pos());
 
-        sensitive << enable;
+        sensitive << clk;
     }
 };
